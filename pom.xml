@@ -18,16 +18,55 @@
     <modules>
         <module>api-automation</module>
         <module>web-automation</module>
+        <module>web-automation-core</module>
+        <module>common-tools</module>
+        <module>testing-components-core</module>
     </modules>
 
     <properties>
+<!--        project related settings-->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+<!--        dependencies versions-->
+        <vavr.version>0.10.4</vavr.version>
+        <web.driver.manager.version>5.3.2</web.driver.manager.version>
+        <modelmapper.version>3.1.1</modelmapper.version>
+        <cucumber.version>7.11.1</cucumber.version>
+        <allure.version>2.21.0</allure.version>
+        <gherkin.version>26.0.3</gherkin.version>
+        <allure-maven-plugin.version>2.12.0</allure-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
-
+        <dependencies>
+            <dependency>
+                <groupId>com.ingenious-build</groupId>
+                <artifactId>api-automation</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ingenious-build</groupId>
+                <artifactId>web-automation</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ingenious-build</groupId>
+                <artifactId>web-automation-core</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ingenious-build</groupId>
+                <artifactId>common-tools</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ingenious-build</groupId>
+                <artifactId>testing-components-core</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <repositories>
@@ -48,5 +87,90 @@
             </releases>
         </repository>
     </repositories>
+
+    <profiles>
+        <profile>
+            <id>all</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*WebTestsCucumberRunner.java</include>
+                                <include>**/*ApiTestsCucumberRunner.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>api</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*ApiTestsCucumberRunner.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>ui</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*WebTestsCucumberRunner.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}</directory>
+                            <includes>
+                                <include>allure-report/**</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven-plugin.version}</version>
+                <configuration>
+                    <inputDirectories>
+                        <directory>api-automation/target/allure-results</directory>
+                        <directory>web-automation/target/allure-results</directory>
+                    </inputDirectories>
+                    <reportDirectory>${project.basedir}/allure-report</reportDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

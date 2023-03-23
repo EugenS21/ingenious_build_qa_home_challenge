@@ -1,0 +1,10 @@
+pages:
+  login:
+    url: https://www.saucedemo.com/
+    form:
+      self: //div[@class='login-box']/form
+      username: ID@user-name
+      password: ID@password
+      errorMessageContainer: XPATH@${pages.login.form.self}}//div[contains(@class,'error-message-container')]
+      loginButton: ID@login-button
+

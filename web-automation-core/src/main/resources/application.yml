@@ -1,0 +1,8 @@
+application:
+  url: https://www.saucedemo.com/
+  driver:
+    type: chrome
+    capabilities:
+      - --remote-allow-origins=*
+
+
