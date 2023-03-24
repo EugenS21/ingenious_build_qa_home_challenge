@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.model.login;
+package com.ingenious_build.qa_home_challenge.web_automation.core.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators;
+package com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page;
 
 import lombok.AccessLevel;
 import lombok.Data;

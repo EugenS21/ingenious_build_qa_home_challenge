@@ -12,6 +12,7 @@ public class TextBlock extends AbstractElement implements Block {
 
     @Override
     public String getContent() {
-        return webElement.getText();
+        return getText();
     }
+
 }

@@ -14,4 +14,8 @@ public abstract class AbstractElement {
         this.webElement = webElement;
     }
 
+    public String getText(){
+        return webElement.getText();
+    }
+
 }

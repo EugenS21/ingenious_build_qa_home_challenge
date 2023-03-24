@@ -1,35 +1,43 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.LoginPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.LoginFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.model.LoginDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.LoginPage;
+import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class LoginPageSteps {
+public class LoginPageSteps extends AbstractStepClass {
 
     LoginPage loginPage;
-    SoftAssertions softAssertion;
-    WebDriver webDriver;
-    LoginPageProperties loginPageProperties;
+
+    @Autowired
+    public LoginPageSteps(StepClassesDependencies dependencies) {
+        super(dependencies);
+        this.loginPage = new LoginPage(pageLocators, webDriver);
+    }
 
     @Given("I am on the login page")
     public void iAmOnTheLoginPage() {
-        webDriver.get(loginPageProperties.getUrl());
+        loginPage.get();
     }
 
     @When("I enter the following login credentials:")
     public void iEnterTheFollowingLoginCredentials(LoginDetails loginDetails) {
-        loginPage.fillFormWithLoginDetails(loginDetails);
+        LoginFormDetails loginFormDetails = modelMapper.map(loginDetails, LoginFormDetails.class);
+        loginPage.fillFormWithLoginDetails(loginFormDetails);
+    }
+
+    @When("I login with the following credentials:")
+    public void iLoginWithTheFollowingLoginCredentials(LoginDetails loginDetails) {
+        LoginFormDetails loginFormDetails = modelMapper.map(loginDetails, LoginFormDetails.class);
+        loginPage.login(loginFormDetails);
     }
 
     @And("click on login button")

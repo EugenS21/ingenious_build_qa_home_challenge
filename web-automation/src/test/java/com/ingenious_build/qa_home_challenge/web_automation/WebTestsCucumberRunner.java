@@ -4,4 +4,5 @@ import com.ingenious_build.qa_home_challenge.testing_components.core.CucumberRun
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
+@CucumberOptions(tags = "@dev")
 public class WebTestsCucumberRunner extends CucumberRunner {}

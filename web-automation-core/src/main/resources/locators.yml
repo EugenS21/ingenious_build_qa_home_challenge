@@ -5,6 +5,45 @@ pages:
       self: //div[@class='login-box']/form
       username: ID@user-name
       password: ID@password
-      errorMessageContainer: XPATH@${pages.login.form.self}}//div[contains(@class,'error-message-container')]
+      errorMessageContainer: XPATH@${pages.login.form.self}//div[contains(@class,'error-message-container')]
       loginButton: ID@login-button
+  inventory:
+    url: https://www.saucedemo.com/inventory.html
+    header:
+      primary:
+        self: //div[contains(@class,'primary_header')]
+        menu: XPATH@${pages.inventory.header.primary.self}//button
+        cart:
+          self: ${pages.inventory.header.primary.self}//a[contains(@class,'shopping_cart_link')]
+          bySelf: XPATH@${pages.inventory.header.primary.cart.self}
+          badge: XPATH@${pages.inventory.header.primary.cart.self}//span[contains(@class,'shopping_cart_badge')]
+      secondary:
+        self: //div[contains(@class,'header_secondary_container')]
+        backToProducts: XPATH@${pages.inventory.header.secondary.self}//button[@id='back-to-products']
+        sortContainer: XPATH@@${pages.inventory.header.secondary.self}//select[contains(@class,'product_sort_container')]
+    body:
+      inventoryList:
+        bySelf: CLASS_NAME@inventory_list
+        inventoryItem:
+          bySelf: CLASS_NAME@inventory_item
+          image: XPATH@//img[contains(@class,'inventory_item_img')]
+          name: CLASS_NAME@inventory_item_name
+          description: CLASS_NAME@inventory_item_desc
+          price: CLASS_NAME@inventory_item_price
+          addToCart: TAG_NAME@button
+  cart:
+    body:
+      cartItems:
+        bySelf: CLASS_NAME@cart_list
+        cartItem:
+          bySelf: CLASS_NAME@cart_item
+          name: ${pages.inventory.body.inventoryList.inventoryItem.name}
+          description: ${pages.inventory.body.inventoryList.inventoryItem.description}
+          price: ${pages.inventory.body.inventoryList.inventoryItem.price}
+          removeFromCart: ${pages.inventory.body.inventoryList.inventoryItem.addToCart}
+
+
+
+
+
 

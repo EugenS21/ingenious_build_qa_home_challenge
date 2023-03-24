@@ -13,6 +13,8 @@ public class ModelMapperConfiguration {
     @Getter(onMethod = @__(@Bean))
     ModelMapper modelMapper;
 
+
+
     public ModelMapperConfiguration() {
         var mapper = new ModelMapper();
         var configuration = mapper.getConfiguration();

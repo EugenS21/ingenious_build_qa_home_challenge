@@ -1,6 +1,7 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.properties;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.LoginPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,5 +18,7 @@ public class PagesProperties {
 
     @NestedConfigurationProperty
     LoginPageProperties login;
+    @NestedConfigurationProperty
+    InventoryPageProperties inventory;
 
 }

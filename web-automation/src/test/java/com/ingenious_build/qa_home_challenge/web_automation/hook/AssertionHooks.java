@@ -7,17 +7,18 @@ import io.cucumber.java.Before;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class AssertionHooks {
 
-    ScenarioContext scenarioContext;
+    SoftAssertions softAssertions;
 
     @After(order = 9)
     public void doSoftAssert() {
-        scenarioContext.getSoftAssertions().assertAll();
+        softAssertions.assertAll();
     }
 
 }

@@ -14,6 +14,13 @@ public class BrowserHooks {
 
     WebAutomationProperties properties;
     WebDriver webDriver;
+    WebAutomationProperties applicationProperties;
+
+    @Before(order = 1)
+    public void navigateToDefaultUrl(){
+        webDriver.get(applicationProperties.getUrl());
+    }
+
 
     @After(order = 10)
     public void closeBrowser() {

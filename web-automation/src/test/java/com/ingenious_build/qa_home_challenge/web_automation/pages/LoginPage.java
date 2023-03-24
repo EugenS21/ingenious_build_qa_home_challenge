@@ -1,38 +1,47 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.model.login.LoginFormDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.LoginPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.LoginFormDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.LoginForm;
-import com.ingenious_build.qa_home_challenge.web_automation.model.LoginDetails;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @ScenarioScope
-public class LoginPage {
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+public class LoginPage extends AbstractPage{
 
     LoginForm loginForm;
-    ModelMapper modelMapper;
+    LoginPageProperties loginPageProperties;
 
-    @Autowired
-    public LoginPage(LoginPageProperties loginPageProperties, ModelMapper modelMapper, WebDriver webDriver) {
+    public LoginPage(PagesProperties properties, WebDriver webDriver) {
+        super(properties, webDriver);
+        this.loginPageProperties = properties.getLogin();
         this.loginForm = new LoginForm(loginPageProperties, webDriver);
-        this.modelMapper = modelMapper;
     }
 
-    public void fillFormWithLoginDetails(LoginDetails loginDetails) {
-        loginForm.fillForm(modelMapper.map(loginDetails, LoginFormDetails.class));
+    public void get() {
+        webDriver.get(loginPageProperties.getUrl());
+    }
+
+    public void fillFormWithLoginDetails(LoginFormDetails loginDetails) {
+        loginForm.fillForm(loginDetails);
     }
 
     public void login() {
         loginForm.login();
+    }
+
+    public void login(LoginFormDetails loginDetails) {
+        loginForm.login(loginDetails);
+    }
+
+    public boolean isExpectedError(String expectedError) {
+        return loginForm.validateFormErrorMessage(expectedError);
     }
 
 }

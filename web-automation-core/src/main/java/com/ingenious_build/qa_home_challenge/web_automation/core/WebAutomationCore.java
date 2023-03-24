@@ -1,8 +1,9 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.application.WebDriverProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.processor.CustomYamlProcessor;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.LoginPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.WebAutomationProperties;
 import lombok.AccessLevel;
@@ -31,6 +32,11 @@ public class WebAutomationCore {
     @Bean
     public LoginPageProperties homePageProperties() {
         return pagesProperties.getLogin();
+    }
+
+    @Bean
+    public InventoryPageProperties inventoryPageProperties() {
+        return pagesProperties.getInventory();
     }
 
     @Bean

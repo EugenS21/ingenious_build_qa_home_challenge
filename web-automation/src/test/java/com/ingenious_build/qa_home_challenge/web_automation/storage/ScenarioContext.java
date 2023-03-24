@@ -20,12 +20,9 @@ import java.util.Map;
 public class ScenarioContext {
 
     Map<StorageKey, Object> store;
-    @Getter
-    SoftAssertions softAssertions;
 
     @Autowired
     public ScenarioContext() {
-        this.softAssertions = new SoftAssertions();
         this.store = new HashMap<>();
     }
 

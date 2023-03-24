@@ -12,7 +12,7 @@ public class TextInput extends AbstractInput implements ITextInput {
 
     @Override
     public String getContent() {
-        return webElement.getText();
+        return webElement.getAttribute("value");
     }
 
 }
