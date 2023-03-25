@@ -46,7 +46,7 @@ public class CartPageSteps extends AbstractAssertionsStepClass {
         softAssertions.assertThat(checkoutPage)
                 .extracting(AbstractPage::getUrl)
                 .describedAs("Expecting to be redirected on checkout page")
-                .matches(el -> el.contains("cart"));
+                .isEqualTo(checkoutPage.getUrl());
     }
 
 }
