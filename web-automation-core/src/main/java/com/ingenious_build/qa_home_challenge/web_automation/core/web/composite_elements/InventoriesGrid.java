@@ -40,6 +40,7 @@ public class InventoriesGrid implements Grid<InventoryItem> {
                         .price(() -> new TextBlock(webElement.findElement(inventoryItem.getPrice())))
                         .addToCart(() -> new Button(webElement.findElement(inventoryItem.getAddToCart())))
                         .build())
+                .map(item -> ((InventoryItem) item))
                 .toList();
     }
 

@@ -2,7 +2,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.web.service;
 
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.InventoryItem;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.AbstractItem;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class InventoryItemSearchService {
+public class InventoryItemSearchService<T extends AbstractItem> {
 
     InventoryItemSearchCriteria searchCriteria;
 
@@ -24,7 +24,7 @@ public class InventoryItemSearchService {
         this.searchCriteria = searchCriteria;
     }
 
-    public InventoryItemsSearch and(List<InventoryItem> items) {
+    public InventoryItemsSearch and(List<T> items) {
         return new InventoryItemsSearch(items);
     }
 
@@ -32,10 +32,10 @@ public class InventoryItemSearchService {
     @RequiredArgsConstructor
     public class InventoryItemsSearch {
 
-        List<InventoryItem> items;
+        List<T> items;
 
-        public List<InventoryItem> getFoundItems() {
-            List<InventoryItem> foundItems = new ArrayList<>();
+        public List<T> getFoundItems() {
+            List<T> foundItems = new ArrayList<>();
             if (Objects.nonNull(searchCriteria.getPrice())) {
                 foundItems = filterCollectionByPredicate(item -> item.getPrice().get().getText().equals(searchCriteria.getPrice()));
             }
@@ -45,7 +45,7 @@ public class InventoryItemSearchService {
             return foundItems;
         }
 
-        private List<InventoryItem> filterCollectionByPredicate(Predicate<InventoryItem> predicate) {
+        private List<T> filterCollectionByPredicate(Predicate<T> predicate) {
             return items.stream()
                     .filter(predicate)
                     .toList();

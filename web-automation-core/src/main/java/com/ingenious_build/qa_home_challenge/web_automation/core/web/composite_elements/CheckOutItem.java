@@ -1,5 +1,6 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
 
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.CheckOutItemDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Anchor;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
@@ -11,22 +12,18 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.function.Supplier;
 
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder(toBuilder = true)
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-@Data
-public class InventoryItem extends AbstractItem {
+@Getter
+@SuperBuilder
+public class CheckOutItem extends AbstractItem {
 
-    Supplier<WebImage> webImage;
-    Supplier<Button> addToCart;
+    Supplier<Button> removeFromCart;
 
-    public void addToCart() {
-        addToCart.get().click();
+    public void removeFromCart() {
+        removeFromCart.get().click();
     }
 
-    public InventoryItemDetails convert() {
-        return InventoryItemDetails.builder()
-                .imageSrc(webImage.get().getSrc())
+    public CheckOutItemDetails convert() {
+        return CheckOutItemDetails.builder()
                 .name(name.get().getText())
                 .description(description.get().getContent())
                 .price(price.get().getText())

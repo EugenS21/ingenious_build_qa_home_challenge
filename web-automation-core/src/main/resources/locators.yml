@@ -31,7 +31,8 @@ pages:
           description: CLASS_NAME@inventory_item_desc
           price: CLASS_NAME@inventory_item_price
           addToCart: TAG_NAME@button
-  cart:
+  checkOut:
+    url: https://www.saucedemo.com/cart.html
     body:
       cartItems:
         bySelf: CLASS_NAME@cart_list
@@ -41,6 +42,11 @@ pages:
           description: ${pages.inventory.body.inventoryList.inventoryItem.description}
           price: ${pages.inventory.body.inventoryList.inventoryItem.price}
           removeFromCart: ${pages.inventory.body.inventoryList.inventoryItem.addToCart}
+      cartFooter:
+        self: //div[contains(@class,'cart_footer')]
+        continueShopping: XPATH@${pages.checkOut.body.cartFooter.self}//button[@id='continue-shopping']
+        checkout: XPATH@${pages.checkOut.body.cartFooter.self}//button[@id='checkout']
+
 
 
 
