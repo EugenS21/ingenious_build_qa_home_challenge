@@ -4,8 +4,9 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.model.Inventory
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutBodyProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.*;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItem;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItemsGrid;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutPageFooter;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;
@@ -14,7 +15,6 @@ import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
@@ -32,6 +32,11 @@ public class CheckoutPage extends AbstractPage{
         CheckOutItemsProperties checkOutItemsProperties = checkOutBodyProperties.getCartItems();
         checkOutItemsGrid = new CheckOutItemsGrid(checkOutItemsProperties, webDriver);
         checkoutPageFooter = new CheckoutPageFooter(checkOutBodyProperties.getCartFooter(), webDriver);
+    }
+
+    @Override
+    public String getExpectedUrl() {
+        return properties.getCheckOut().getUrl();
     }
 
     public List<ProductDetails> getCheckoutItems() {

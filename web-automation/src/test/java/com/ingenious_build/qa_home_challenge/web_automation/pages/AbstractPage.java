@@ -1,14 +1,14 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.AbstractPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
-import org.springframework.ui.ModelMap;
 
-@FieldDefaults(makeFinal = true, level = AccessLevel.PACKAGE)
+@FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
 @RequiredArgsConstructor
 public abstract class AbstractPage {
 
@@ -16,8 +16,10 @@ public abstract class AbstractPage {
     PagesProperties properties;
     WebDriver webDriver;
 
-    public String getUrl() {
+    public String getActualUrl() {
         return webDriver.getCurrentUrl();
     }
+
+    public abstract String getExpectedUrl();
 
 }

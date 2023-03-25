@@ -2,6 +2,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.steps.assertions;
 
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.web_automation.pages.AbstractPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.ProductsPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractAssertionsStepClass;
 import io.cucumber.java.en.Then;
@@ -21,6 +22,14 @@ public class ProductsPageSteps extends AbstractAssertionsStepClass {
     public ProductsPageSteps(ProductsPage productsPage, StepClassesDependencies dependencies, SoftAssertions softAssertions) {
         super(dependencies, softAssertions);
         this.productsPage = productsPage;
+    }
+
+    @Then("I should be redirected to products page")
+    public void iShouldBeRedirectedToProductsPage() {
+        softAssertions.assertThat(productsPage)
+                .extracting(AbstractPage::getActualUrl)
+                .describedAs("Expecting to be redirected to inventory page")
+                .isEqualTo(productsPage.getExpectedUrl());
     }
 
     @Then("I should see the following items on the page:")

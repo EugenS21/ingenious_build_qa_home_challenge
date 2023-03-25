@@ -1,6 +1,7 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.assertions;
 
 import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.web_automation.pages.AbstractPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.LoginPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractAssertionsStepClass;
 import io.cucumber.java.en.Then;
@@ -18,17 +19,11 @@ public class LoginPageSteps extends AbstractAssertionsStepClass {
         this.loginPage = loginPage;
     }
 
-    @Then("I should be redirected to products page")
-    public void iShouldBeRedirectedToProductsPage() {
-        softAssertions.assertThat(loginPage.getUrl())
-                .describedAs("Expecting to be redirected to inventory page")
-                .contains("inventory");
-    }
-
     @Then("I should see '{}' error")
     public void iShouldSeeALoginError(String expectedError) {
         softAssertions.assertThat(loginPage.isExpectedError(expectedError))
                 .describedAs("Expecting to see {} error while login", expectedError)
                 .isTrue();
     }
+
 }

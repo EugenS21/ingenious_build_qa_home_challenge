@@ -45,7 +45,12 @@ public class ProductsPage extends AbstractPage{
         productsGrid.searchForItem(searchCriteria).forEach(InventoryItem::addToCart);
     }
 
-    public void goToCart(){
+    @Override
+    public String getExpectedUrl() {
+        return properties.getInventory().getUrl();
+    }
+
+    public void goToCart() {
         header.goToCart();
     }
 

@@ -1,10 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutBodyProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItemsGrid;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutPageFooter;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.*;
+import com.ingenious_build.qa_home_challenge.web_automation.model.MonetaryAmount;
+import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -12,24 +12,65 @@ import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @ScenarioScope
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class CheckoutOverviewPage extends AbstractPage{
+public class CheckoutOverviewPage extends AbstractPage {
 
-    CheckOutItemsGrid checkOutItemsGrid;
-    CheckoutPageFooter checkoutPageFooter;
+    CheckOutOverviewItems checkOutOverviewItems;
+    CheckoutOverviewSummary checkoutOverviewSummary;
+    CheckoutOverviewFooter checkoutOverviewFooter;
 
     public CheckoutOverviewPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
         super(modelMapper, properties, webDriver);
-        CheckOutBodyProperties checkOutBodyProperties = properties.getCheckOut().getBody();
-        CheckOutItemsProperties checkOutItemsProperties = checkOutBodyProperties.getCartItems();
-        checkOutItemsGrid = new CheckOutItemsGrid(checkOutItemsProperties, webDriver);
-        checkoutPageFooter = new CheckoutPageFooter(checkOutBodyProperties.getCartFooter(), webDriver);
+        this.checkOutOverviewItems = new CheckOutOverviewItems(properties.getCheckOutOverview().getItems(), webDriver);
+        this.checkoutOverviewSummary = new CheckoutOverviewSummary(properties.getCheckOutOverview().getSummaryInfo(), webDriver);
+        this.checkoutOverviewFooter = new CheckoutOverviewFooter(properties.getCheckOutOverview().getFooter(), webDriver);
+
+    }
+
+    @Override
+    public String getExpectedUrl() {
+        return properties.getCheckOutOverview().getUrl();
+    }
+
+    public List<ProductDetails> getCheckoutOverviewItems() {
+        return checkOutOverviewItems.getCheckOutOverviewItems().stream()
+                .map(CheckOutOverviewItem::convert)
+                .map(inventoryItemDetails -> modelMapper.map(inventoryItemDetails, ProductDetails.class).toBuilder()
+                        .price(TestUtils.getMonetaryAmountFromString.apply(inventoryItemDetails.getPrice()))
+                        .build())
+                .toList();
+    }
+
+    public String getPaymentInfo() {
+        return checkoutOverviewSummary.getPaymentInfo();
+    }
+
+    public String getShippingInfo() {
+        return checkoutOverviewSummary.getShippingInfo();
+    }
+
+    public MonetaryAmount getItemTotalPrice() {
+        return TestUtils.getMonetaryAmountFromString.apply(checkoutOverviewSummary.getItemTotalPrice());
+    }
+
+    public MonetaryAmount getTax() {
+        return TestUtils.getMonetaryAmountFromString.apply(checkoutOverviewSummary.getTax());
+    }
+
+    public MonetaryAmount getTotalPrice() {
+        return TestUtils.getMonetaryAmountFromString.apply(checkoutOverviewSummary.getTotalPrice());
     }
 
     public void finish() {
+        checkoutOverviewFooter.finish();
+    }
 
+    public void cancel() {
+        checkoutOverviewFooter.cancel();
     }
 
 }

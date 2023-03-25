@@ -27,6 +27,11 @@ public class CheckoutInformationPage extends AbstractPage{
         checkOutInformationForm.doContinue();
     }
 
+    @Override
+    public String getExpectedUrl() {
+        return properties.getCheckOutInformation().getUrl();
+    }
+
     public void doCancel() {
         checkOutInformationForm.cancel();
     }

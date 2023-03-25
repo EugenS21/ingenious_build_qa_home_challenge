@@ -33,6 +33,7 @@ Feature: Validation 1 - Checkout Process
       | Sauce Labs Fleece Jacket |
     Then I should validate that the items have been removed
     When I proceed to checkout
+    Then I should be redirected to checkout information page
     And I fill in my checkout information:
       | firstName | lastName | zipCode     |
       | Test      | User     | TestZipCode |
@@ -41,6 +42,12 @@ Feature: Validation 1 - Checkout Process
 
     When I review my orders details
     Then I should see the summary of items I ordered
+    And I should confirm that my payment information is correct
+    Then I should verify that my shipping information is correct
+    And I should confirm that I am charged the correct price for my items
 
     When I finish the checkout process
-    Then I should see the order confirmation
+    Then I should be redirected to checkout complete page
+    And I should see the order confirmation as follows:
+      | Thank you for your order!                                                               |
+      | Your order has been dispatched, and will arrive just as fast as the pony can get there! |

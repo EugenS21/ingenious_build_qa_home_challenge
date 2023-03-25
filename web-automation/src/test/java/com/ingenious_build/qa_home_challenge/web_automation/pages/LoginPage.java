@@ -45,4 +45,9 @@ public class LoginPage extends AbstractPage{
         return loginForm.validateFormErrorMessage(expectedError);
     }
 
+    @Override
+    public String getExpectedUrl() {
+        return properties.getLogin().getUrl();
+    }
+
 }

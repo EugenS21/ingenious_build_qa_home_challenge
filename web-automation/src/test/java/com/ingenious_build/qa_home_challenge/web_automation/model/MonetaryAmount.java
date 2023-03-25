@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.FieldNameConstants;
+import org.openqa.selenium.InvalidArgumentException;
 
 import java.math.BigDecimal;
 import java.util.Currency;
@@ -16,5 +17,14 @@ public class MonetaryAmount {
 
     Currency currency;
     BigDecimal amount;
+
+    public MonetaryAmount sum(MonetaryAmount other) {
+        if (other.getCurrency().equals(currency)) {
+            return this.toBuilder()
+                    .amount(amount.add(other.amount))
+                    .build();
+        }
+        throw new InvalidArgumentException("Can't sum monetary amounts with different currencies");
+    }
 
 }
