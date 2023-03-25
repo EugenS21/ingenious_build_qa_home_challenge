@@ -19,16 +19,26 @@ Feature: Validation 1 - Checkout Process
       | Sauce Labs Fleece Jacket          | It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office. | $49.99 |
       | Sauce Labs Onesie                 | Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.        | $7.99  |
       | Test.allTheThings() T-Shirt (Red) | This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.              | $15.99 |
+
     When I add the following items to the cart:
       | Sauce Labs Bike Light |
       | Sauce Labs Onesie     |
-    Then I should see '2' items added to cart
+      | Sauce Labs Fleece Jacket     |
+    Then I should see '3' items added to cart
     And I go to the cart
     Then I should be redirected to checkout page
     And I should see the items I added earlier
+
     When I remove the following items from the cart:
-      | A |
-      | B |
+      | Sauce Labs Fleece Jacket |
     Then I should validate that the items have been removed
     When I proceed to checkout
+    And I fill in my checkout information
+    And I continue checkout process
+    Then I should be redirected to overview page
+
+    When I review my orders details
+    Then I should see the summary of items I ordered
+
+    When I finish the checkout process
     Then I should see the order confirmation

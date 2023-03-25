@@ -7,12 +7,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Builder(toBuilder = true)
+@Data
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-@Data
-public class InventoryItemSearchCriteria {
+public class CheckOutItemDetails {
 
     String name;
+    String description;
     String price;
 
 }

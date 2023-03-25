@@ -1,6 +1,6 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.ItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryItemProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryListProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.Grid;
@@ -8,7 +8,7 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.im
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.TextBlock;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.WebImage;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.service.InventoryItemSearchService;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.service.ItemsSearchService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -25,8 +25,8 @@ public class InventoriesGrid implements Grid<InventoryItem> {
     WebDriver webDriver;
 
     @Override
-    public List<InventoryItem> searchForItem(InventoryItemSearchCriteria searchCriteria) {
-        return InventoryItemSearchService.doWith(searchCriteria).and(getItems()).getFoundItems();
+    public List<InventoryItem> searchForItem(ItemSearchCriteria searchCriteria) {
+        return ItemsSearchService.doWith(searchCriteria).and(getItems()).getFoundItems();
     }
 
     @Override
@@ -40,6 +40,7 @@ public class InventoriesGrid implements Grid<InventoryItem> {
                         .price(() -> new TextBlock(webElement.findElement(inventoryItem.getPrice())))
                         .addToCart(() -> new Button(webElement.findElement(inventoryItem.getAddToCart())))
                         .build())
+                .map(item -> ((InventoryItem) item))
                 .toList();
     }
 

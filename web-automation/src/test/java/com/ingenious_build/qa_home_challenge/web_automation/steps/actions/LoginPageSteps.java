@@ -18,9 +18,9 @@ public class LoginPageSteps extends AbstractStepClass {
     LoginPage loginPage;
 
     @Autowired
-    public LoginPageSteps(StepClassesDependencies dependencies) {
+    public LoginPageSteps(LoginPage loginPage, StepClassesDependencies dependencies) {
         super(dependencies);
-        this.loginPage = new LoginPage(pageLocators, webDriver);
+        this.loginPage = loginPage;
     }
 
     @Given("I am on the login page")
