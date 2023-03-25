@@ -10,7 +10,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -19,9 +18,9 @@ public class LoginPageSteps extends AbstractStepClass {
     LoginPage loginPage;
 
     @Autowired
-    public LoginPageSteps(ModelMapper modelMapper, StepClassesDependencies dependencies) {
+    public LoginPageSteps(LoginPage loginPage, StepClassesDependencies dependencies) {
         super(dependencies);
-        this.loginPage = new LoginPage(modelMapper, pageLocators, webDriver);
+        this.loginPage = loginPage;
     }
 
     @Given("I am on the login page")

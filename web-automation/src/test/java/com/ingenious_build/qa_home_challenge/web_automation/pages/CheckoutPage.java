@@ -7,6 +7,7 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.properties.loca
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.*;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -16,8 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
 import java.util.List;
-
-import static com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils.getMonetaryAmountFromString;
 
 @Component
 @ScenarioScope
@@ -39,7 +38,7 @@ public class CheckoutPage extends AbstractPage{
         return checkOutItemsGrid.getItems().stream()
                 .map(CheckOutItem::convert)
                 .map(checkOutItem -> modelMapper.map(checkOutItem, ProductDetails.class).toBuilder()
-                        .price(getMonetaryAmountFromString.apply(checkOutItem.getPrice()))
+                        .price(TestUtils.getMonetaryAmountFromString.apply(checkOutItem.getPrice()))
                         .build())
                 .toList();
     }

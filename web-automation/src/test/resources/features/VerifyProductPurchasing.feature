@@ -21,9 +21,9 @@ Feature: Validation 1 - Checkout Process
       | Test.allTheThings() T-Shirt (Red) | This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.              | $15.99 |
 
     When I add the following items to the cart:
-      | Sauce Labs Bike Light |
-      | Sauce Labs Onesie     |
-      | Sauce Labs Fleece Jacket     |
+      | Sauce Labs Bike Light    |
+      | Sauce Labs Onesie        |
+      | Sauce Labs Fleece Jacket |
     Then I should see '3' items added to cart
     And I go to the cart
     Then I should be redirected to checkout page
@@ -33,12 +33,14 @@ Feature: Validation 1 - Checkout Process
       | Sauce Labs Fleece Jacket |
     Then I should validate that the items have been removed
     When I proceed to checkout
-#    And I fill in my checkout information
-#    And I continue checkout process
-#    Then I should be redirected to overview page
-#
-#    When I review my orders details
-#    Then I should see the summary of items I ordered
-#
-#    When I finish the checkout process
+    And I fill in my checkout information:
+      | firstName | lastName | zipCode     |
+      | Test      | User     | TestZipCode |
+    And I continue checkout process
+    Then I should be redirected to overview page
+
+    When I review my orders details
+    Then I should see the summary of items I ordered
+
+    When I finish the checkout process
     Then I should see the order confirmation

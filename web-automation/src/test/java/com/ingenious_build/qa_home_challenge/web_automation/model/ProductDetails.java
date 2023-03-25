@@ -8,7 +8,6 @@ import java.util.Currency;
 
 @Data
 @Builder(toBuilder = true)
-@FieldNameConstants
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
 public class ProductDetails {

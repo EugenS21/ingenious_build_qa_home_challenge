@@ -6,7 +6,6 @@ import lombok.experimental.FieldNameConstants;
 
 @Data
 @Builder(toBuilder = true)
-@FieldNameConstants
 public class LoginDetails {
 
     String username;

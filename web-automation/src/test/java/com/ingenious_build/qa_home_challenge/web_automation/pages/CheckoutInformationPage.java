@@ -1,10 +1,8 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.CheckoutInformationFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutBodyProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItemsGrid;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutPageFooter;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutInformationForm;
 import com.ingenious_build.qa_home_challenge.web_automation.model.CheckoutInformation;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
@@ -18,27 +16,24 @@ import org.springframework.stereotype.Component;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CheckoutInformationPage extends AbstractPage{
 
-    CheckOutItemsGrid checkOutItemsGrid;
-    CheckoutPageFooter checkoutPageFooter;
+    CheckOutInformationForm checkOutInformationForm;
 
     public CheckoutInformationPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
         super(modelMapper, properties, webDriver);
-        CheckOutBodyProperties checkOutBodyProperties = properties.getCheckOut().getBody();
-        CheckOutItemsProperties checkOutItemsProperties = checkOutBodyProperties.getCartItems();
-        checkOutItemsGrid = new CheckOutItemsGrid(checkOutItemsProperties, webDriver);
-        checkoutPageFooter = new CheckoutPageFooter(checkOutBodyProperties.getCartFooter(), webDriver);
+        checkOutInformationForm = new CheckOutInformationForm(properties.getCheckOutInformation(), webDriver);
     }
 
     public void doContinue() {
-
+        checkOutInformationForm.doContinue();
     }
 
     public void doCancel() {
-
+        checkOutInformationForm.cancel();
     }
 
     public void fillInformationForm(CheckoutInformation checkoutInformation) {
-
+        CheckoutInformationFormDetails webCheckoutInformation = modelMapper.map(checkoutInformation, CheckoutInformationFormDetails.class);
+        checkOutInformationForm.fillIn(webCheckoutInformation);
     }
 
 }
