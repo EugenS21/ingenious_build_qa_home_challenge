@@ -22,7 +22,7 @@ public class ScreenshotHooks {
 
     WebDriver webDriver;
 
-    @AfterStep(order = 10, value = "not @test")
+    @After(order = 10, value = "not @test")
     public void takeScreenshot(Scenario scenario) {
         if (scenario.isFailed()) {
             TakesScreenshot screenshot = ((TakesScreenshot) webDriver);
