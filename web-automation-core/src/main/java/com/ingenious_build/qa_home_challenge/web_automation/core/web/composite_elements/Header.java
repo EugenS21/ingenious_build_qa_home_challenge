@@ -1,5 +1,7 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
 
+import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
+import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryHeaderProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.*;
 import lombok.AccessLevel;
@@ -7,6 +9,8 @@ import lombok.experimental.FieldDefaults;
 import org.openqa.selenium.WebDriver;
 
 import java.util.function.Supplier;
+
+import static com.ingenious_build.qa_home_challenge.web_automation.core.web.service.SortingStrategySolverService.of;
 
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -27,12 +31,12 @@ public class Header {
         cart.get().openCart();
     }
 
-    public Integer getProductsAddedToCart(){
+    public Integer getProductsAddedToCart() {
         return cart.get().numberOfProductsAddedToCart();
     }
 
-    public void sort(String sortingStrategy) {
-        sortContainer.get().selectOption(sortingStrategy);
+    public void sort(SortingField sortingField, SortingStrategy sortingStrategy) {
+        sortContainer.get().selectOption(of(sortingField, sortingStrategy).getStrategy());
     }
 
     public void backToInventory() {

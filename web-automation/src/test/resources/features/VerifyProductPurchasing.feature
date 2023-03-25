@@ -1,7 +1,6 @@
-@dev
 Feature: Validation 1 - Checkout Process
   As a registered user
-  I want to be able to purchase inventory
+  I want to be able to purchase items
 
   Background:
     Given I am on the login page
@@ -11,7 +10,8 @@ Feature: Validation 1 - Checkout Process
       | username      | password     |
       | standard_user | secret_sauce |
     Then I should be redirected to products page
-    And I should see the following items on the page:
+    When I check the products grid
+    And I should see the following products:
       | name                              | description                                                                                                                                                            | price  |
       | Sauce Labs Backpack               | carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.                                 | $29.99 |
       | Sauce Labs Bike Light             | A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.        | $9.99  |

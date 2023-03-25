@@ -23,7 +23,7 @@ public class SortSelect implements ISelect {
 
     @Override
     public void selectOption(String option) {
-        select.selectByValue(option);
+        select.selectByVisibleText(option);
     }
 
 }

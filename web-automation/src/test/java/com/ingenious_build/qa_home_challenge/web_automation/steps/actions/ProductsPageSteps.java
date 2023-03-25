@@ -1,6 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
+import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
+import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
+import com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey;
+import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.ProductsPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepClass;
@@ -11,6 +15,7 @@ import lombok.experimental.FieldDefaults;
 import java.util.List;
 
 import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_ADDED_TO_CART;
+import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_FROM_GRID;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ProductsPageSteps extends AbstractStepClass {
@@ -21,7 +26,6 @@ public class ProductsPageSteps extends AbstractStepClass {
         super(dependencies);
         this.productsPage = productsPage;
     }
-
 
     @When("I add the following items to the cart:")
     public void iAddTheFollowingItemsToTheCart(List<String> itemsToAdd) {
@@ -34,4 +38,14 @@ public class ProductsPageSteps extends AbstractStepClass {
         productsPage.goToCart();
     }
 
+    @When("I sort the items by {sortingField} {sortingStrategy}")
+    public void iSortTheItems(SortingField sortingField, SortingStrategy sortingStrategy) {
+        productsPage.sort(sortingField, sortingStrategy);
+    }
+
+    @When("I check the products grid")
+    public void iCheckTheProductsGrid() {
+        List<ProductDetails> productsFromGrid = productsPage.getProductsFromGrid();
+        scenarioContext.addValue(PRODUCTS_FROM_GRID, productsFromGrid);
+    }
 }
