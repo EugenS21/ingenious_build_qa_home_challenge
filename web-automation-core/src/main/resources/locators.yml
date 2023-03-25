@@ -46,10 +46,38 @@ pages:
         self: //div[contains(@class,'cart_footer')]
         continueShopping: XPATH@${pages.checkOut.body.cartFooter.self}//button[@id='continue-shopping']
         checkout: XPATH@${pages.checkOut.body.cartFooter.self}//button[@id='checkout']
-
-
-
-
-
-
-
+  checkOutInformation:
+    url: https://www.saucedemo.com/checkout-step-one.html
+    form:
+      self: //div[@class='checkout_info']
+      firstName: ID@first-name
+      lastName: ID@last-name
+      zipCode: ID@postal-code
+      error: CLASS_NAME@error-message-container
+      continue: CLASS_NAME@cancel
+      cancel: CLASS_NAME@continue
+  checkOutOverview:
+    url: https://www.saucedemo.com/checkout-step-two.html
+    items:
+      bySelf: ${pages.checkOut.body.cartItems.cartItem.bySelf}
+      item:
+        name: ${pages.inventory.body.inventoryList.inventoryItem.name}
+        description: ${pages.inventory.body.inventoryList.inventoryItem.description}
+        price: ${pages.inventory.body.inventoryList.inventoryItem.price}
+    summaryInfo:
+      self: //div[contains(@class,'summary_info')]
+      paymentInfo: XPATH@${pages.checkOutOverview.summaryInfo.self}//div[contains(@class,'summary_value_label') and contains(text(), '#')]
+      shippingInfo: XPATH@${pages.checkOutOverview.summaryInfo.self}//div[contains(@class,'summary_value_label') and contains(text(), 'Delivery')]
+      price:
+        itemTotal: XPATH@${pages.checkOutOverview.summaryInfo.self}//div[contains(@class,'summary_subtotal_label')]
+        tax: XPATH@${pages.checkOutOverview.summaryInfo.self}//div[contains(@class,'summary_tax_label')]
+        total: XPATH@${pages.checkOutOverview.summaryInfo.self}//div[contains(@class,'summary_total_label')]
+    footer:
+      cancel: ID@cancel
+      finish: ID@finish
+  checkOutComplete:
+    url: https://www.saucedemo.com/checkout-complete.html
+    container:
+      header: CLASS_NAME@complete-header
+      text: CLASS_NAME@complete-text
+      backHome: ID@back-to-products
