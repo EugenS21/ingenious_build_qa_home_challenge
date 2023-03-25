@@ -6,11 +6,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
+import org.springframework.ui.ModelMap;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PACKAGE)
 @RequiredArgsConstructor
 public abstract class AbstractPage {
 
+    ModelMapper modelMapper;
     PagesProperties properties;
     WebDriver webDriver;
 

@@ -10,6 +10,7 @@ import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepCl
 import io.cucumber.java.en.When;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public class ProductsPageSteps extends AbstractStepClass {
 
     ProductsPage productsPage;
 
-    public ProductsPageSteps(StepClassesDependencies dependencies) {
+    public ProductsPageSteps(ModelMapper modelMapper, StepClassesDependencies dependencies) {
         super(dependencies);
-        productsPage = new ProductsPage(pageLocators, webDriver);
+        productsPage = new ProductsPage(modelMapper, pageLocators, webDriver);
     }
 
 

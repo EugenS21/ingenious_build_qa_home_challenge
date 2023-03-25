@@ -6,9 +6,12 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.properties.loca
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.Header;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.InventoriesGrid;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.InventoryItem;
+import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
 
@@ -22,15 +25,20 @@ public class ProductsPage extends AbstractPage{
     Header header;
     InventoriesGrid productsGrid;
 
-    public ProductsPage(PagesProperties properties, WebDriver webDriver) {
-        super(properties, webDriver);
+    public ProductsPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
+        super(modelMapper, properties, webDriver);
         InventoryPageProperties inventoryProperties = properties.getInventory();
         this.header = new Header(inventoryProperties.getHeader(), webDriver);
         this.productsGrid = new InventoriesGrid(inventoryProperties.getBody().getInventoryList(), webDriver);
     }
 
-    public List<InventoryItem> getProductsFromGrid() {
-        return productsGrid.getItems();
+    public List<ProductDetails> getProductsFromGrid() {
+        return productsGrid.getItems().stream()
+                .map(InventoryItem::convert)
+                .map(inventoryItemDetails -> modelMapper.map(inventoryItemDetails, ProductDetails.class).toBuilder()
+                        .price(TestUtils.getMonetaryAmountFromString.apply(inventoryItemDetails.getPrice()))
+                        .build())
+                .toList();
     }
 
     public void addItemsToCart(InventoryItemSearchCriteria searchCriteria) {

@@ -7,6 +7,7 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_e
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +19,8 @@ public class LoginPage extends AbstractPage{
     LoginForm loginForm;
     LoginPageProperties loginPageProperties;
 
-    public LoginPage(PagesProperties properties, WebDriver webDriver) {
-        super(properties, webDriver);
+    public LoginPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
+        super(modelMapper, properties, webDriver);
         this.loginPageProperties = properties.getLogin();
         this.loginForm = new LoginForm(loginPageProperties, webDriver);
     }
