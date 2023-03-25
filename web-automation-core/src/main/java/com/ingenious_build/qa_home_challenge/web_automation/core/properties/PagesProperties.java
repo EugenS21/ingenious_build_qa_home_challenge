@@ -1,5 +1,8 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.properties;
 
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutCompletePageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutInformationPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutOverviewPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
@@ -23,5 +26,11 @@ public class PagesProperties {
     InventoryPageProperties inventory;
     @NestedConfigurationProperty
     CheckOutPageProperties checkOut;
+    @NestedConfigurationProperty
+    CheckOutInformationPageProperties checkOutInformation;
+    @NestedConfigurationProperty
+    CheckOutOverviewPageProperties checkOutOverview;
+    @NestedConfigurationProperty
+    CheckOutCompletePageProperties checkOutComplete;
 
 }

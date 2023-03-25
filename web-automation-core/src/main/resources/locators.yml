@@ -54,7 +54,7 @@ pages:
       lastName: ID@last-name
       zipCode: ID@postal-code
       error: CLASS_NAME@error-message-container
-      continue: CLASS_NAME@cancel
+      doContinue: CLASS_NAME@cancel
       cancel: CLASS_NAME@continue
   checkOutOverview:
     url: https://www.saucedemo.com/checkout-step-two.html
