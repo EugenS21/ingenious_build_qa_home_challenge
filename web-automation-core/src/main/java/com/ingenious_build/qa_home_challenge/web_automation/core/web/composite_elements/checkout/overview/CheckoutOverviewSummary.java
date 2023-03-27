@@ -17,7 +17,6 @@ public class CheckoutOverviewSummary {
     Supplier<TextBlock> tax;
     Supplier<TextBlock> total;
 
-
     public CheckoutOverviewSummary(CheckoutOverviewSummaryProperties properties, WebDriver webDriver) {
         this.paymentInfo = () -> new TextBlock(webDriver.findElement(properties.getPaymentInfo()));
         this.shippingInfo = () -> new TextBlock(webDriver.findElement(properties.getShippingInfo()));

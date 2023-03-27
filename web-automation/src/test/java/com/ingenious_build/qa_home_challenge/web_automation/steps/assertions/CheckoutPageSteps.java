@@ -23,15 +23,15 @@ import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStora
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CheckoutPageSteps extends AbstractAssertionsStepClass {
 
-    CheckoutPage checkoutPage;
+    CartPage cartPage;
     CheckoutCompletePage checkoutCompletePage;
     CheckoutInformationPage checkoutInformationPage;
     CheckoutOverviewPage checkoutOverviewPage;
 
     @Autowired
-    public CheckoutPageSteps(CheckoutPage checkoutPage, CheckoutCompletePage checkoutCompletePage, CheckoutInformationPage checkoutInformationPage, CheckoutOverviewPage checkoutOverviewPage, StepClassesDependencies dependencies, SoftAssertions softAssertions) {
+    public CheckoutPageSteps(CartPage cartPage, CheckoutCompletePage checkoutCompletePage, CheckoutInformationPage checkoutInformationPage, CheckoutOverviewPage checkoutOverviewPage, StepClassesDependencies dependencies, SoftAssertions softAssertions) {
         super(dependencies, softAssertions);
-        this.checkoutPage = checkoutPage;
+        this.cartPage = cartPage;
         this.checkoutCompletePage = checkoutCompletePage;
         this.checkoutInformationPage = checkoutInformationPage;
         this.checkoutOverviewPage = checkoutOverviewPage;
@@ -40,7 +40,7 @@ public class CheckoutPageSteps extends AbstractAssertionsStepClass {
     @Then("I should see the items I added earlier")
     public void iShouldSeeTheItemsIAddedEarlier() {
         List<String> expectedProducts = scenarioContext.getListValue(UiStorageKey.PRODUCTS_ADDED_TO_CART, String.class);
-        List<ProductDetails> actualProducts = checkoutPage.getCheckoutItems();
+        List<ProductDetails> actualProducts = cartPage.getCheckoutProducts();
         softAssertions.assertThat(actualProducts)
                 .filteredOn(product -> expectedProducts.contains(product.getName()))
                 .describedAs("Expecting to see only $s on checkout page", expectedProducts)
@@ -49,7 +49,7 @@ public class CheckoutPageSteps extends AbstractAssertionsStepClass {
 
     @Then("I should validate that the items have been removed")
     public void iShouldValidateThatTheItemsHaveBeenRemoved() {
-        List<ProductDetails> actualItems = checkoutPage.getCheckoutItems();
+        List<ProductDetails> actualItems = cartPage.getCheckoutProducts();
         List<String> removedItems = scenarioContext.getListValue(UiStorageKey.PRODUCTS_REMOVED_FROM_CART, String.class);
         softAssertions.assertThat(actualItems)
                 .extracting(ProductDetails::getName)
@@ -66,10 +66,10 @@ public class CheckoutPageSteps extends AbstractAssertionsStepClass {
 
     @Then("I should be redirected to checkout page")
     public void iShouldBeRedirectedToCheckoutPage() {
-        softAssertions.assertThat(checkoutPage)
+        softAssertions.assertThat(cartPage)
                 .extracting(AbstractPage::getActualUrl)
                 .describedAs("Expecting to be redirected on checkout page")
-                .matches(el -> el.equals(checkoutPage.getExpectedUrl()));
+                .matches(el -> el.equals(cartPage.getExpectedUrl()));
     }
 
     @Then("I should be redirected to overview page")
@@ -119,14 +119,14 @@ public class CheckoutPageSteps extends AbstractAssertionsStepClass {
                 .map(ProductDetails::getPrice)
                 .map(MonetaryAmount::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        softAssertions.assertThat(checkoutOverviewPage.getItemTotalPrice())
+        softAssertions.assertThat(checkoutOverviewPage.getProductTotalPrice())
                 .describedAs("Expecting correct amount of money to pay for ordered items")
                 .usingComparatorForType(BigDecimal::compareTo, BigDecimal.class)
                 .satisfies(totalPrice -> {
                     softAssertions.assertThat(totalPrice.getAmount()).usingComparatorForType(BigDecimal::compareTo, BigDecimal.class).isEqualTo(expectedProductsTotalPrice);
                     softAssertions.assertThat(totalPrice.getCurrency()).isEqualTo(currency.get());
                 });
-        softAssertions.assertThat(checkoutOverviewPage.getItemTotalPrice())
+        softAssertions.assertThat(checkoutOverviewPage.getProductTotalPrice())
                 .describedAs("Expecting the sum of items price and tax to be equal to total price")
                 .extracting(price -> price.sum(checkoutOverviewPage.getTax()))
                 .isEqualTo(checkoutOverviewPage.getTotalPrice());

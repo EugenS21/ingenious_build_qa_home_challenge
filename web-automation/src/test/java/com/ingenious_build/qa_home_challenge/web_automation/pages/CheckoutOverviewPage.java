@@ -2,7 +2,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewItem;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewItems;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewItemsGrid;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewFooter;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckoutOverviewSummary;
 import com.ingenious_build.qa_home_challenge.web_automation.model.MonetaryAmount;
@@ -22,16 +22,15 @@ import java.util.List;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CheckoutOverviewPage extends AbstractPage {
 
-    CheckOutOverviewItems checkOutOverviewItems;
+    CheckOutOverviewItemsGrid checkOutOverviewItemsGrid;
     CheckoutOverviewSummary checkoutOverviewSummary;
     CheckOutOverviewFooter checkoutOverviewFooter;
 
     public CheckoutOverviewPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
         super(modelMapper, properties, webDriver);
-        this.checkOutOverviewItems = new CheckOutOverviewItems(properties.getCheckOutOverview().getItems(), webDriver);
+        this.checkOutOverviewItemsGrid = new CheckOutOverviewItemsGrid(properties.getCheckOutOverview().getItems(), webDriver);
         this.checkoutOverviewSummary = new CheckoutOverviewSummary(properties.getCheckOutOverview().getSummaryInfo(), webDriver);
         this.checkoutOverviewFooter = new CheckOutOverviewFooter(properties.getCheckOutOverview().getFooter(), webDriver);
-
     }
 
     @Override
@@ -40,8 +39,8 @@ public class CheckoutOverviewPage extends AbstractPage {
     }
 
     public List<ProductDetails> getCheckoutOverviewItems() {
-        return checkOutOverviewItems.getCheckOutOverviewItems().stream()
-                .map(CheckOutOverviewItem::convert)
+        return checkOutOverviewItemsGrid.getItems().stream()
+                .map(CheckOutOverviewItem::getData)
                 .map(inventoryItemDetails -> modelMapper.map(inventoryItemDetails, ProductDetails.class).toBuilder()
                         .price(TestUtils.getMonetaryAmountFromString.apply(inventoryItemDetails.getPrice()))
                         .build())
@@ -56,7 +55,7 @@ public class CheckoutOverviewPage extends AbstractPage {
         return checkoutOverviewSummary.getShippingInfo();
     }
 
-    public MonetaryAmount getItemTotalPrice() {
+    public MonetaryAmount getProductTotalPrice() {
         return TestUtils.getMonetaryAmountFromString.apply(checkoutOverviewSummary.getItemTotalPrice());
     }
 

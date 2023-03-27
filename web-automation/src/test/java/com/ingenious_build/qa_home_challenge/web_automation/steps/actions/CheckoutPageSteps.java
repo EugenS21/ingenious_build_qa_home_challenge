@@ -7,7 +7,7 @@ import com.ingenious_build.qa_home_challenge.web_automation.model.CheckoutInform
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutInformationPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutOverviewPage;
-import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutPage;
+import com.ingenious_build.qa_home_challenge.web_automation.pages.CartPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepClass;
 import io.cucumber.java.en.When;
 import lombok.AccessLevel;
@@ -21,14 +21,14 @@ import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStora
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CheckoutPageSteps extends AbstractStepClass {
 
-    CheckoutPage checkoutPage;
+    CartPage cartPage;
     CheckoutInformationPage checkoutInformationPage;
     CheckoutOverviewPage checkoutOverviewPage;
 
     @Autowired
-    public CheckoutPageSteps(CheckoutPage checkoutPage, CheckoutInformationPage checkoutInformationPage, CheckoutOverviewPage checkoutOverviewPage, StepClassesDependencies dependencies) {
+    public CheckoutPageSteps(CartPage cartPage, CheckoutInformationPage checkoutInformationPage, CheckoutOverviewPage checkoutOverviewPage, StepClassesDependencies dependencies) {
         super(dependencies);
-        this.checkoutPage = checkoutPage;
+        this.cartPage = cartPage;
         this.checkoutInformationPage = checkoutInformationPage;
         this.checkoutOverviewPage = checkoutOverviewPage;
 
@@ -37,12 +37,12 @@ public class CheckoutPageSteps extends AbstractStepClass {
     @When("I remove the following items from the cart:")
     public void iRemoveTheFollowingItemsFromTheCart(List<String> itemsToRemove) {
         scenarioContext.addValue(PRODUCTS_REMOVED_FROM_CART, itemsToRemove);
-        itemsToRemove.forEach(name -> checkoutPage.removeItemFromCart(InventoryItemSearchCriteria.builder().name(name).build()));
+        itemsToRemove.forEach(name -> cartPage.removeProductFromCart(InventoryItemSearchCriteria.builder().name(name).build()));
     }
 
     @When("I proceed to checkout")
     public void iProceedToCheckout() {
-        checkoutPage.checkout();
+        cartPage.checkout();
     }
 
     @When("I fill in my checkout information:")

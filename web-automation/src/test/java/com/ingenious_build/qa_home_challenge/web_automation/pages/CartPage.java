@@ -4,9 +4,9 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.model.Inventory
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutBodyProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckOutItem;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckOutItemsGrid;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckoutPageFooter;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CartItem;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CartItemsGrid;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CartFooter;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;
@@ -21,17 +21,17 @@ import java.util.List;
 @Component
 @ScenarioScope
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class CheckoutPage extends AbstractPage{
+public class CartPage extends AbstractPage {
 
-    CheckOutItemsGrid checkOutItemsGrid;
-    CheckoutPageFooter checkoutPageFooter;
+    CartItemsGrid cartItemsGrid;
+    CartFooter cartFooter;
 
-    public CheckoutPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
+    public CartPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
         super(modelMapper, properties, webDriver);
         CheckOutBodyProperties checkOutBodyProperties = properties.getCheckOut().getBody();
         CheckOutItemsProperties checkOutItemsProperties = checkOutBodyProperties.getCartItems();
-        checkOutItemsGrid = new CheckOutItemsGrid(checkOutItemsProperties, webDriver);
-        checkoutPageFooter = new CheckoutPageFooter(checkOutBodyProperties.getCartFooter(), webDriver);
+        cartItemsGrid = new CartItemsGrid(checkOutItemsProperties, webDriver);
+        cartFooter = new CartFooter(checkOutBodyProperties.getCartFooter(), webDriver);
     }
 
     @Override
@@ -39,25 +39,25 @@ public class CheckoutPage extends AbstractPage{
         return properties.getCheckOut().getUrl();
     }
 
-    public List<ProductDetails> getCheckoutItems() {
-        return checkOutItemsGrid.getItems().stream()
-                .map(CheckOutItem::convert)
+    public List<ProductDetails> getCheckoutProducts() {
+        return cartItemsGrid.getItems().stream()
+                .map(CartItem::getData)
                 .map(checkOutItem -> modelMapper.map(checkOutItem, ProductDetails.class).toBuilder()
                         .price(TestUtils.getMonetaryAmountFromString.apply(checkOutItem.getPrice()))
                         .build())
                 .toList();
     }
 
-    public void removeItemFromCart(InventoryItemSearchCriteria searchCriteria) {
-        checkOutItemsGrid.searchForItem(searchCriteria).forEach(CheckOutItem::removeFromCart);
+    public void removeProductFromCart(InventoryItemSearchCriteria searchCriteria) {
+        cartItemsGrid.searchForItem(searchCriteria).forEach(CartItem::removeFromCart);
     }
 
     public void checkout() {
-        checkoutPageFooter.checkout();
+        cartFooter.checkout();
     }
 
     public void continueShopping() {
-        checkoutPageFooter.continueShopping();
+        cartFooter.continueShopping();
     }
 
 }

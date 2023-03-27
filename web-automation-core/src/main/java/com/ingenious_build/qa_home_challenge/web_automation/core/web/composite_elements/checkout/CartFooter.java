@@ -11,17 +11,17 @@ import java.util.function.Supplier;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class CheckoutPageFooter {
+public class CartFooter {
 
     Supplier<Button> continueShopping;
     Supplier<Button> checkOut;
 
-    public CheckoutPageFooter(CheckOutCartFooterProperties properties, WebDriver webDriver) {
+    public CartFooter(CheckOutCartFooterProperties properties, WebDriver webDriver) {
         continueShopping = () -> new Button(webDriver.findElement(properties.getContinueShopping()));
         checkOut = () -> new Button(webDriver.findElement(properties.getCheckout()));
     }
 
-    public void checkout(){
+    public void checkout() {
         checkOut.get().click();
     }
 

@@ -1,6 +1,6 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.inventory;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.item.InventoryItemDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.AbstractItem;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.WebImage;
@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 @SuperBuilder(toBuilder = true)
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @Data
-public class InventoryItem extends AbstractItem {
+public class InventoryItem extends AbstractItem<InventoryItemDetails> {
 
     Supplier<WebImage> webImage;
     Supplier<Button> addToCart;
@@ -25,7 +25,8 @@ public class InventoryItem extends AbstractItem {
         addToCart.get().click();
     }
 
-    public InventoryItemDetails convert() {
+    @Override
+    public InventoryItemDetails getData() {
         return InventoryItemDetails.builder()
                 .imageSrc(webImage.get().getSrc())
                 .name(name.get().getText())

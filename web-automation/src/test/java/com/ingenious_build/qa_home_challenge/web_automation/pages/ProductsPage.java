@@ -36,14 +36,14 @@ public class ProductsPage extends AbstractPage{
 
     public List<ProductDetails> getProductsFromGrid() {
         return productsGrid.getItems().stream()
-                .map(InventoryItem::convert)
+                .map(InventoryItem::getData)
                 .map(inventoryItemDetails -> modelMapper.map(inventoryItemDetails, ProductDetails.class).toBuilder()
                         .price(TestUtils.getMonetaryAmountFromString.apply(inventoryItemDetails.getPrice()))
                         .build())
                 .toList();
     }
 
-    public void addItemsToCart(InventoryItemSearchCriteria searchCriteria) {
+    public void addProductsToCart(InventoryItemSearchCriteria searchCriteria) {
         productsGrid.searchForItem(searchCriteria).forEach(InventoryItem::addToCart);
     }
 

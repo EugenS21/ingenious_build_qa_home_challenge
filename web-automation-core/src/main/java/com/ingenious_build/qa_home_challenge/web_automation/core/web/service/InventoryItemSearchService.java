@@ -2,6 +2,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.web.service;
 
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.item.Item;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.AbstractItem;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class InventoryItemSearchService<T extends AbstractItem> {
+public class InventoryItemSearchService<U extends Item, T extends AbstractItem<U>> {
 
     InventoryItemSearchCriteria searchCriteria;
 

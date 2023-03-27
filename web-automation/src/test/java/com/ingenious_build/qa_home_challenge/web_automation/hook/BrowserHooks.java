@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 @RequiredArgsConstructor
 public class BrowserHooks {
 
-    WebAutomationProperties properties;
     WebDriver webDriver;
     WebAutomationProperties applicationProperties;
 

@@ -3,7 +3,6 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckOutItem;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.Grid;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Anchor;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
@@ -19,27 +18,27 @@ import java.util.List;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class CheckOutItemsGrid implements Grid<CheckOutItem> {
+public class CartItemsGrid implements Grid<CartItem> {
 
     CheckOutItemsProperties checkOutItemsProperties;
     WebDriver webDriver;
 
     @Override
-    public List<CheckOutItem> searchForItem(InventoryItemSearchCriteria searchCriteria) {
+    public List<CartItem> searchForItem(InventoryItemSearchCriteria searchCriteria) {
         return InventoryItemSearchService.doWith(searchCriteria).and(getItems()).getFoundItems();
     }
 
     @Override
-    public List<CheckOutItem> getItems() {
+    public List<CartItem> getItems() {
         CheckOutItemProperties cartItem = checkOutItemsProperties.getCartItem();
         return webDriver.findElements(cartItem.getBySelf()).stream()
-                .map(webElement -> CheckOutItem.builder()
+                .map(webElement -> CartItem.builder()
                         .name(() -> new Anchor(webElement.findElement(cartItem.getName())))
                         .description(() -> new TextBlock(webElement.findElement(cartItem.getDescription())))
                         .price(() -> new TextBlock(webElement.findElement(cartItem.getPrice())))
                         .removeFromCart(() -> new Button(webElement.findElement(cartItem.getRemoveFromCart())))
                         .build())
-                .map(item -> ((CheckOutItem) item))
+                .map(item -> ((CartItem) item))
                 .toList();
     }
 

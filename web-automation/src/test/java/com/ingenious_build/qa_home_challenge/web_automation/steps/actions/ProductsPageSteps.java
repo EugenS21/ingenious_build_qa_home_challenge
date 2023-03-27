@@ -29,7 +29,7 @@ public class ProductsPageSteps extends AbstractStepClass {
     @When("I add the following items to the cart:")
     public void iAddTheFollowingItemsToTheCart(List<String> itemsToAdd) {
         scenarioContext.addValue(PRODUCTS_ADDED_TO_CART, itemsToAdd);
-        itemsToAdd.forEach(name -> productsPage.addItemsToCart(InventoryItemSearchCriteria.builder().name(name).build()));
+        itemsToAdd.forEach(name -> productsPage.addProductsToCart(InventoryItemSearchCriteria.builder().name(name).build()));
     }
 
     @When("I go to the cart")
