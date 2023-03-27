@@ -13,5 +13,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 public class UserEndpointProperties extends AbstractEndpoint {
 
+    String byId;
 
 }

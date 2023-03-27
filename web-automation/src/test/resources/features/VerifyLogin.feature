@@ -1,4 +1,4 @@
-Feature: Validation 4 - User Authentication
+Feature: UI Validation 4 - User Authentication
   As a registered user
   I want to be able to log in to the system
   So that I can access inventory

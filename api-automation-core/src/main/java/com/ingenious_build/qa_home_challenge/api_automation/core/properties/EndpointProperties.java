@@ -1,7 +1,5 @@
 package com.ingenious_build.qa_home_challenge.api_automation.core.properties;
 
-import com.ingenious_build.qa_home_challenge.api_automation.core.properties.endpoints.login.LoginEndpointProperties;
-import com.ingenious_build.qa_home_challenge.api_automation.core.properties.endpoints.register.RegistrationEndpointProperties;
 import com.ingenious_build.qa_home_challenge.api_automation.core.properties.endpoints.users.UserEndpointProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +17,5 @@ public class EndpointProperties {
 
     @NestedConfigurationProperty
     UserEndpointProperties users;
-    @NestedConfigurationProperty
-    LoginEndpointProperties login;
-    @NestedConfigurationProperty
-    RegistrationEndpointProperties register;
 
 }

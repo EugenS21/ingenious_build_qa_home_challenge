@@ -38,6 +38,7 @@
         <allure.version>2.21.0</allure.version>
         <gherkin.version>26.0.3</gherkin.version>
         <allure-maven-plugin.version>2.12.0</allure-maven-plugin.version>
+        <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
     <dependencyManagement>

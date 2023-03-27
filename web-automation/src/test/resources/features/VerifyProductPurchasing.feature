@@ -1,4 +1,4 @@
-Feature: Validation 1 - Checkout Process
+Feature: UI Validation 1 - Checkout Process
   As a registered user
   I want to be able to purchase items
 

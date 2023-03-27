@@ -2,8 +2,6 @@ package com.ingenious_build.qa_home_challenge.api_automation.core;
 
 import com.ingenious_build.qa_home_challenge.api_automation.core.properties.ApiApplicationProperties;
 import com.ingenious_build.qa_home_challenge.api_automation.core.properties.EndpointProperties;
-import com.ingenious_build.qa_home_challenge.api_automation.core.properties.endpoints.login.LoginEndpointProperties;
-import com.ingenious_build.qa_home_challenge.api_automation.core.properties.endpoints.register.RegistrationEndpointProperties;
 import com.ingenious_build.qa_home_challenge.api_automation.core.properties.endpoints.users.UserEndpointProperties;
 import com.ingenious_build.qa_home_challenge.api_automation.core.properties.web_client.WebClientProperties;
 import com.ingenious_build.qa_home_challenge.common_tools.FrameworkConfig;
@@ -39,14 +37,5 @@ public class ApiAutomationApplication {
         return endpointProperties.getUsers();
     }
 
-    @Bean
-    public LoginEndpointProperties loginEndpointProperties() {
-        return endpointProperties.getLogin();
-    }
-
-    @Bean
-    public RegistrationEndpointProperties registrationEndpointProperties() {
-        return endpointProperties.getRegister();
-    }
 
 }

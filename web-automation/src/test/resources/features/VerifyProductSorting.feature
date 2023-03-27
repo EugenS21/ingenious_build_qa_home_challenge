@@ -1,4 +1,4 @@
-Feature: Validation 2 and 3- Sorting Items
+Feature: UI Validation 2 and 3- Sorting Items
   As a registered user
   I want to be able to sort items
 

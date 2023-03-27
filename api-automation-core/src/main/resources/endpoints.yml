@@ -3,8 +3,3 @@ endpoints:
   users:
     path: ${endpoints.baseUrl}/users
     byId: /{userId}
-  login:
-    path: ${endpoints.baseUrl}/login
-  register:
-    path: ${endpoints.baseUrl}/register
-
