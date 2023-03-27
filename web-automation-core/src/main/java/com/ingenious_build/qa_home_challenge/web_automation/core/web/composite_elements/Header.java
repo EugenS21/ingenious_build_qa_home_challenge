@@ -19,23 +19,23 @@ import static com.ingenious_build.qa_home_challenge.web_automation.core.web.serv
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Header {
 
-    Supplier<ShoppingCart> cart;
+    ShoppingCart cart;
     Supplier<Button> backToProducts;
     Supplier<SortSelect> sortContainer;
 
     public Header(InventoryHeaderProperties headerProperties, WebDriver webDriver) {
-        this.cart = () -> new ShoppingCart(new Anchor(webDriver.findElement(headerProperties.getPrimary().getCart().getBySelf())),
-                new Span(webDriver.findElement(headerProperties.getPrimary().getCart().getBadge())));
+        this.cart = new ShoppingCart(() -> new Anchor(webDriver.findElement(headerProperties.getPrimary().getCart().getBySelf())),
+                () -> new Span(webDriver.findElement(headerProperties.getPrimary().getCart().getBadge())));
         this.backToProducts = () -> new Button(webDriver.findElement(headerProperties.getSecondary().getBackToProducts()));
         this.sortContainer = () -> new SortSelect(webDriver.findElement(headerProperties.getSecondary().getSortContainer()));
     }
 
     public void goToCart() {
-        cart.get().openCart();
+        cart.openCart();
     }
 
     public Integer getProductsAddedToCart() {
-        return cart.get().numberOfProductsAddedToCart();
+        return cart.numberOfProductsAddedToCart();
     }
 
     public void sort(SortingField sortingField, SortingStrategy sortingStrategy) {

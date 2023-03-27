@@ -4,9 +4,9 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.model.Inventory
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutBodyProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItem;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItemsGrid;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutPageFooter;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckOutItem;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckOutItemsGrid;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckoutPageFooter;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;

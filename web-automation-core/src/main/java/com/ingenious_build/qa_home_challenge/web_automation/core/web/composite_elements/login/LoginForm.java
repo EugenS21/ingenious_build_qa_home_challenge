@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
+package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.login;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.LoginFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginFormProperties;

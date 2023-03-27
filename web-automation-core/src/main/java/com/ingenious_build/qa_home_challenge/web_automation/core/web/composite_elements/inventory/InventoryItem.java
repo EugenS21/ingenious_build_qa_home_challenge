@@ -1,6 +1,7 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
+package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.inventory;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemDetails;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.AbstractItem;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.WebImage;
 import lombok.AccessLevel;

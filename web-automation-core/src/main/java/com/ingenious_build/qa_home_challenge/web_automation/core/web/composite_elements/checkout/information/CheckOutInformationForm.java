@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
+package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.information;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.CheckoutInformationFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutInformationPageProperties;

@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
+package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.inventory;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryItemProperties;

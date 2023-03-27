@@ -3,7 +3,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.pages;
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.LoginFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.LoginForm;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.login.LoginForm;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

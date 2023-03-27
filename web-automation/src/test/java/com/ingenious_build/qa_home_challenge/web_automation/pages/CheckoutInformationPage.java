@@ -2,7 +2,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.CheckoutInformationFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutInformationForm;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.information.CheckOutInformationForm;
 import com.ingenious_build.qa_home_challenge.web_automation.model.CheckoutInformation;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;

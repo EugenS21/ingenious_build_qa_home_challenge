@@ -92,7 +92,7 @@ run only scenario annotated with @demo use:
 
 `mvn clean verify -P <type> -Dcucumber.filter.tags=@demo`
 
-Tests can be ran with different browsers: CHROME, FIREFOX, EDGE, by running:
+Tests can be run with different browsers: CHROME, FIREFOX, EDGE, by running:
 `mvn clean verify -P ui allure:aggregate -Dapplication.driver.type=<type>`
 
 ## Results
@@ -101,19 +101,19 @@ To generate a testing report use:
 
 `mvn allure:aggregate`
 
-The command from bellow will aggregate all the reports from ui and api module into a single one available inside *
-*%dir%/ingenious_build_qa_home_challenge/allure-report/**. Open **index.html** to view the report.
+The command from bellow will aggregate all the reports from ui and api module into a single one available
+inside [allure-report](./allure-report) directory. Open [index.html](./allure-report/index.html) in any browser to view
+the report.
 
 ## How to develop new tests
 
-UI and API tests shared almost the same structure when it comes to writing tests. You can add new feature files inside *
-*src/test/resources/features**.
-Step definitions are stored inside **steps** package, under **src/test/java/** and are split by type in
+UI and API tests shared almost the same structure when it comes to writing tests. You can add new feature files inside:
+
+* [Web feature file folder](./web-automation/src/test/resources/features)
+* [Api feature file folder](./api-automation/src/test/resources/features)
+
+Step definitions are stored
+inside [api steps](./api-automation/src/test/java/com/ingenious_build/qa_home_challenge/api_automation/steps)
+and [web steps](./web-automation/src/test/java/com/ingenious_build/qa_home_challenge/web_automation/steps) package and
+are split by type in
 actions/assertions packages to store actions and assertions steps, make sure you follow this convention when adding new.
-
-### Web
-
-To add new
-
-### API
-

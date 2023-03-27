@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
+package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.complete;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutCompleteContainerProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;

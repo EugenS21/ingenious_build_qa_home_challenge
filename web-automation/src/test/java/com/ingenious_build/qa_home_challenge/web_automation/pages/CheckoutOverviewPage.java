@@ -1,10 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutOverviewItem;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutOverviewItems;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutOverviewFooter;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutOverviewSummary;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewItem;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewItems;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckOutOverviewFooter;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.overview.CheckoutOverviewSummary;
 import com.ingenious_build.qa_home_challenge.web_automation.model.MonetaryAmount;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
@@ -24,13 +24,13 @@ public class CheckoutOverviewPage extends AbstractPage {
 
     CheckOutOverviewItems checkOutOverviewItems;
     CheckoutOverviewSummary checkoutOverviewSummary;
-    CheckoutOverviewFooter checkoutOverviewFooter;
+    CheckOutOverviewFooter checkoutOverviewFooter;
 
     public CheckoutOverviewPage(ModelMapper modelMapper, PagesProperties properties, WebDriver webDriver) {
         super(modelMapper, properties, webDriver);
         this.checkOutOverviewItems = new CheckOutOverviewItems(properties.getCheckOutOverview().getItems(), webDriver);
         this.checkoutOverviewSummary = new CheckoutOverviewSummary(properties.getCheckOutOverview().getSummaryInfo(), webDriver);
-        this.checkoutOverviewFooter = new CheckoutOverviewFooter(properties.getCheckOutOverview().getFooter(), webDriver);
+        this.checkoutOverviewFooter = new CheckOutOverviewFooter(properties.getCheckOutOverview().getFooter(), webDriver);
 
     }
 

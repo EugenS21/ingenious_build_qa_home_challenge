@@ -1,8 +1,9 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
+package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.checkout.CheckOutItem;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.Grid;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Anchor;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;

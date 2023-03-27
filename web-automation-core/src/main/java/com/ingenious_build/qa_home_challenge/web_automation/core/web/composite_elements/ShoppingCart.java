@@ -6,19 +6,21 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import java.util.function.Supplier;
+
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class ShoppingCart {
 
-    Anchor anchor;
-    Span badge;
+    Supplier<Anchor> anchor;
+    Supplier<Span> badge;
 
-    public void openCart(){
-        anchor.click();
+    public void openCart() {
+        anchor.get().click();
     }
 
     public Integer numberOfProductsAddedToCart() {
-        return Integer.valueOf(badge.getText());
+        return Integer.valueOf(badge.get().getText());
     }
 
 }
