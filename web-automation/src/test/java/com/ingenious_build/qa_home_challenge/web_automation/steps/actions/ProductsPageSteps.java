@@ -1,10 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
+import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.ProductsPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepClass;
 import io.cucumber.java.en.When;

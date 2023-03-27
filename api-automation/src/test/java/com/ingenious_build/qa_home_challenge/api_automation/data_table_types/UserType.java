@@ -1,6 +1,5 @@
 package com.ingenious_build.qa_home_challenge.api_automation.data_table_types;
 
-import com.github.javafaker.Faker;
 import com.ingenious_build.qa_home_challenge.api_automation.model.UpdateUserDetails;
 import io.cucumber.java.DataTableType;
 import lombok.SneakyThrows;

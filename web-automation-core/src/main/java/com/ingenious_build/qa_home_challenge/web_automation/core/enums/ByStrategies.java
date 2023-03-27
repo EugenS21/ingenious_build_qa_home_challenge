@@ -9,6 +9,6 @@ public enum ByStrategies {
     TAG_NAME,
     LINK_TEXT,
     NAME,
-    PARTIAL_LINK_TEXT;
+    PARTIAL_LINK_TEXT
 
 }

@@ -1,7 +1,10 @@
 package com.ingenious_build.qa_home_challenge.api_automation.core.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.net.URL;

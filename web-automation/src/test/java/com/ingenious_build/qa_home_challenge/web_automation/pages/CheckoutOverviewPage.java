@@ -1,7 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.*;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutOverviewItem;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutOverviewItems;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutOverviewFooter;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutOverviewSummary;
 import com.ingenious_build.qa_home_challenge.web_automation.model.MonetaryAmount;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;

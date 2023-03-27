@@ -1,12 +1,7 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.AbstractPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutBodyProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutItemsProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutCompleteContainer;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckOutItemsGrid;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.CheckoutPageFooter;
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

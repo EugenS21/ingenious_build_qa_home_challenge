@@ -1,9 +1,9 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.assertions;
 
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.AbstractPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.ProductsPage;
 import com.ingenious_build.qa_home_challenge.web_automation.service.ComparatorService;
@@ -60,4 +60,5 @@ public class ProductsPageSteps extends AbstractAssertionsStepClass {
         softAssertions.assertThat(actualProducts)
                 .isSortedAccordingTo(comparatorService.getComparator(sortingStrategy, sortingField));
     }
+
 }

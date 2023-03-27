@@ -1,11 +1,11 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Anchor;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.TextBlock;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.WebImage;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 

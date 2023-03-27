@@ -2,7 +2,6 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.properties;
 
 import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 

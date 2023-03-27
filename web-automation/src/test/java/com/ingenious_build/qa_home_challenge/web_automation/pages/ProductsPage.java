@@ -1,13 +1,13 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
+import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
+import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.Header;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.InventoriesGrid;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements.InventoryItem;
-import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
-import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.utils.TestUtils;
 import io.cucumber.spring.ScenarioScope;

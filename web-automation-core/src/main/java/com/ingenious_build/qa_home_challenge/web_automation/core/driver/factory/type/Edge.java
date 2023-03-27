@@ -9,26 +9,28 @@ import lombok.experimental.FieldDefaults;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class Chrome implements ConfigurableWebDriver {
+public class Edge implements ConfigurableWebDriver {
 
     @Getter
     WebDriverManager webDriverManager;
     @Getter
-    ChromeOptions driverOptions;
+    EdgeOptions edgeOptions;
 
     @Autowired
-    public Chrome(WebDriverProperties properties) {
-        this.driverOptions = new ChromeOptions().addArguments(properties.getCapabilities());
+    public Edge(WebDriverProperties properties) {
+        this.edgeOptions = new EdgeOptions().addArguments(properties.getCapabilities());
         this.webDriverManager = WebDriverManager.chromedriver();
     }
 
     @Override
     public WebDriver get() {
         webDriverManager.setup();
-        return new ChromeDriver(driverOptions);
+        return new EdgeDriver(edgeOptions);
     }
 
 }

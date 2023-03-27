@@ -1,12 +1,12 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core;
 
 import com.ingenious_build.qa_home_challenge.common_tools.FrameworkConfig;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.application.WebDriverProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
 import com.ingenious_build.qa_home_challenge.common_tools.properties.processor.CustomYamlProcessor;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.WebAutomationProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.driver.WebDriverProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryPageProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -14,9 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.*;
 
 @Import(FrameworkConfig.class)
-@ComponentScan(basePackages = {
-        "com.ingenious_build.qa_home_challenge.web_automation",
-})
+@ComponentScan(basePackages = "com.ingenious_build.qa_home_challenge.web_automation")
 @Configuration
 @EnableConfigurationProperties({WebAutomationProperties.class, PagesProperties.class})
 @PropertySources({

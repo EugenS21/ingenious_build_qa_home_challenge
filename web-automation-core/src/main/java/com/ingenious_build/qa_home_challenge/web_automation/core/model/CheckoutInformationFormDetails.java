@@ -2,7 +2,6 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.FieldNameConstants;
 
 
 @Builder(toBuilder = true)

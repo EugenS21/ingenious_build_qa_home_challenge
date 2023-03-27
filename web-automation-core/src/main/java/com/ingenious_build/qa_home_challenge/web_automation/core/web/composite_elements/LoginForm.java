@@ -4,8 +4,8 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.model.LoginForm
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginFormProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.login_page.LoginPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.input.PasswordInput;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.TextBlock;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.input.PasswordInput;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.input.TextInput;
 import org.openqa.selenium.WebDriver;
 

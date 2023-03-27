@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.openqa.selenium.By;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 @EqualsAndHashCode(callSuper = true)

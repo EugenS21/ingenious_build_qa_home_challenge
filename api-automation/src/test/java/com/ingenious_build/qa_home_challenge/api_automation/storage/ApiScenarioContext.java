@@ -5,13 +5,11 @@ import com.ingenious_build.qa_home_challenge.testing_components.core.storage.Sce
 import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @ScenarioScope(proxyMode = ScopedProxyMode.NO)
-@SuppressWarnings("all")
 public class ApiScenarioContext extends ScenarioContext<ApiStorageKey> {
 }

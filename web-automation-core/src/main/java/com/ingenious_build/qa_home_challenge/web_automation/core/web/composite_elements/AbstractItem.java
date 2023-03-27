@@ -2,7 +2,8 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Anchor;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.TextBlock;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 

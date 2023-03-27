@@ -4,7 +4,6 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.properties.loca
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.TextBlock;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.openqa.selenium.WebDriver;
 

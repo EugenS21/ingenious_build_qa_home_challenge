@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
-import org.springframework.boot.context.properties.bind.Nested;
 
 @EqualsAndHashCode(callSuper = true)
 @Data

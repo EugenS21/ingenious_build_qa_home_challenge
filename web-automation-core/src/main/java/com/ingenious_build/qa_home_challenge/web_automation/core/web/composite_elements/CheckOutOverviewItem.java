@@ -1,6 +1,5 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.model.CheckOutItemDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.ItemDetails;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;

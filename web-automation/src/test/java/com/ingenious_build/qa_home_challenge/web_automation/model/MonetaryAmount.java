@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.FieldNameConstants;
 import org.openqa.selenium.InvalidArgumentException;
 
 import java.math.BigDecimal;

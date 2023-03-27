@@ -7,7 +7,6 @@ import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.im
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;

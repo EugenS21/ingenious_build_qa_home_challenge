@@ -1,11 +1,7 @@
 package com.ingenious_build.qa_home_challenge.testing_components.core.storage;
 
 import com.ingenious_build.qa_home_challenge.testing_components.core.enums.StorageKey;
-import io.cucumber.spring.ScenarioScope;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;

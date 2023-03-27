@@ -1,7 +1,6 @@
 package com.ingenious_build.qa_home_challenge.web_automation.hook;
 
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.time.LocalDateTime;
 
 import static io.qameta.allure.Allure.getLifecycle;
 

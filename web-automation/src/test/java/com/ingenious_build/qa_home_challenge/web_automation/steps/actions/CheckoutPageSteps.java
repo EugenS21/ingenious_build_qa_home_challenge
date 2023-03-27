@@ -1,10 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey;
 import com.ingenious_build.qa_home_challenge.web_automation.model.CheckoutInformation;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutInformationPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutOverviewPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutPage;

@@ -1,6 +1,5 @@
 package com.ingenious_build.qa_home_challenge.web_automation.pages;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.AbstractPageProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

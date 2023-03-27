@@ -1,4 +1,4 @@
-package com.ingenious_build.qa_home_challenge.web_automation.core.properties.application;
+package com.ingenious_build.qa_home_challenge.web_automation.core.properties.driver;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.DriverType;
 import lombok.AccessLevel;

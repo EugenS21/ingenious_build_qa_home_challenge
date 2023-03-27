@@ -4,3 +4,4 @@ application:
     type: chrome
     capabilities:
       - --remote-allow-origins=*
+      - --headless

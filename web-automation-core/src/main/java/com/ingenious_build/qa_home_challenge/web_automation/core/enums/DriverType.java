@@ -4,9 +4,6 @@ public enum DriverType {
 
     FIREFOX,
     EDGE,
-    CHROMIUM,
-    CHROME,
-    OPERA,
-    SAFARI;
+    CHROME
 
 }

@@ -51,10 +51,12 @@ I selected to work with some popular libraries:
 - **Cucumber** - to write tests in a clear and concise manner that describes the behavior of the system in plain
   English. This can help ensure that everyone on the team has a shared understanding of the requirements and can help
   reduce ambiguity in the tests.
+- **Selenium** - it's a popular framework to interact with ui devices: browsers, mobiles;
+- **webdrivermanager** - to easy manage web driver initialization and browsers binary download;
 - **Lombok** - to generate boilerplate code (setters, getters, constructors...) automatically;
 - **Vavr** - to make the code more concise and readable;
 - **Spring WebClient** - it offers a functional API, which allows to write clean and concise code for making HTTP
-  requests, supports non blocking I/O and it's easy to integrate with Spring framework;
+  requests, supports non-blocking I/O, and it's easy to integrate with Spring framework;
 - **Model Mapper** - a tool to auto-map objects of a type to another;
 - **Apache Commons** - contains a rich set of useful methods for working with strings, collections and many more;
 - **Allure** - provides rich and detailed reports, it's easy to customize;
@@ -90,6 +92,9 @@ run only scenario annotated with @demo use:
 
 `mvn clean verify -P <type> -Dcucumber.filter.tags=@demo`
 
+Tests can be ran with different browsers: CHROME, FIREFOX, EDGE, by running:
+`mvn clean verify -P ui allure:aggregate -Dapplication.driver.type=<type>`
+
 ## Results
 
 To generate a testing report use:
@@ -99,7 +104,16 @@ To generate a testing report use:
 The command from bellow will aggregate all the reports from ui and api module into a single one available inside *
 *%dir%/ingenious_build_qa_home_challenge/allure-report/**. Open **index.html** to view the report.
 
-## Individual projects description
+## How to develop new tests
 
-- [Web automation](./web-automation/README.md)
-- [API automation](./api-automation/README.md)
+UI and API tests shared almost the same structure when it comes to writing tests. You can add new feature files inside *
+*src/test/resources/features**.
+Step definitions are stored inside **steps** package, under **src/test/java/** and are split by type in
+actions/assertions packages to store actions and assertions steps, make sure you follow this convention when adding new.
+
+### Web
+
+To add new
+
+### API
+

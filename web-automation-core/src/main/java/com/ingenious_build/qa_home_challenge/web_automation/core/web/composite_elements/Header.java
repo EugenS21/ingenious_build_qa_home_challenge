@@ -3,7 +3,10 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.invetory_page.InventoryHeaderProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.*;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Anchor;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.SortSelect;
+import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Span;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.openqa.selenium.WebDriver;

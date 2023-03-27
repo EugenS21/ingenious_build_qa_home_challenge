@@ -1,36 +1,24 @@
 package com.ingenious_build.qa_home_challenge.api_automation.steps.actions;
 
-import com.github.javafaker.Faker;
 import com.ingenious_build.qa_home_challenge.api_automation.core.model.*;
 import com.ingenious_build.qa_home_challenge.api_automation.core.service.UsersService;
 import com.ingenious_build.qa_home_challenge.api_automation.enums.ApiStorageKey;
 import com.ingenious_build.qa_home_challenge.api_automation.model.CreateUserDetails;
 import com.ingenious_build.qa_home_challenge.api_automation.model.UpdateUserDetails;
 import com.ingenious_build.qa_home_challenge.api_automation.storage.ApiScenarioContext;
-import com.ingenious_build.qa_home_challenge.testing_components.core.storage.ScenarioContext;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.junit.jupiter.api.Assertions;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.ingenious_build.qa_home_challenge.api_automation.enums.ApiStorageKey.*;
-import static java.util.stream.Collectors.toList;
 import static reactor.core.publisher.Flux.fromIterable;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)

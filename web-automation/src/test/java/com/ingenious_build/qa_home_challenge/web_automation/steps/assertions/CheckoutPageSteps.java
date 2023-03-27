@@ -1,9 +1,9 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.assertions;
 
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey;
 import com.ingenious_build.qa_home_challenge.web_automation.model.MonetaryAmount;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.*;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractAssertionsStepClass;
 import io.cucumber.java.en.Then;

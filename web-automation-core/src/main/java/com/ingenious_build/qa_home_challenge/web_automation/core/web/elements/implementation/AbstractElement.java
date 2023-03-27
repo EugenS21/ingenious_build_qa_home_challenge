@@ -2,7 +2,6 @@ package com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.i
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)

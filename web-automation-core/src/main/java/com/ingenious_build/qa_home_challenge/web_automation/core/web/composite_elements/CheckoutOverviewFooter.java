@@ -1,10 +1,8 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.web.composite_elements;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckOutCartFooterProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.locators.check_out_page.CheckoutOverviewFooterProperties;
 import com.ingenious_build.qa_home_challenge.web_automation.core.web.elements.implementation.Button;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.openqa.selenium.WebDriver;
 

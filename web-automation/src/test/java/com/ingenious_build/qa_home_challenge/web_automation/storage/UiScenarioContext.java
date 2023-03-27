@@ -10,6 +10,5 @@ import org.springframework.stereotype.Component;
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @ScenarioScope
-@SuppressWarnings("all")
 public class UiScenarioContext extends ScenarioContext<UiStorageKey> {
 }

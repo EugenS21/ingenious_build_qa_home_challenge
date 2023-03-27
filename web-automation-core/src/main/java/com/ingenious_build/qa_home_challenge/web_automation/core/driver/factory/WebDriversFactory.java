@@ -1,16 +1,16 @@
 package com.ingenious_build.qa_home_challenge.web_automation.core.driver.factory;
 
-import com.ingenious_build.qa_home_challenge.web_automation.core.driver.factory.type.Chrome;
+import com.ingenious_build.qa_home_challenge.web_automation.core.driver.factory.type.*;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.DriverType;
-import com.ingenious_build.qa_home_challenge.web_automation.core.exception.UnknownDriverException;
-import com.ingenious_build.qa_home_challenge.web_automation.core.properties.application.WebDriverProperties;
+import com.ingenious_build.qa_home_challenge.web_automation.core.exception.UnknownDriverTypeException;
+import com.ingenious_build.qa_home_challenge.web_automation.core.properties.driver.WebDriverProperties;
 import io.vavr.control.Option;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
-import static com.ingenious_build.qa_home_challenge.web_automation.core.enums.DriverType.CHROME;
+import static com.ingenious_build.qa_home_challenge.web_automation.core.enums.DriverType.*;
 import static io.vavr.API.*;
 import static java.lang.String.format;
 
@@ -25,14 +25,11 @@ public class WebDriversFactory {
         DriverType type = driverProperties.getType();
         return Option.of(type)
                 .map(typeEnum -> Match(typeEnum).of(
-//                        Case($(FIREFOX), WebDriverManager::firefoxdriver),
-//                        Case($(EDGE), WebDriverManager::edgedriver),
-//                        Case($(CHROMIUM), WebDriverManager::chromiumdriver),
-//                        Case($(OPERA), WebDriverManager::operadriver),
-//                        Case($(SAFARI), WebDriverManager::safaridriver),
+                        Case($(FIREFOX), new Firefox(driverProperties)),
+                        Case($(EDGE), new Edge(driverProperties)),
                         Case($(CHROME), new Chrome(driverProperties))
                 ))
-                .getOrElseThrow(() -> new UnknownDriverException(format("Unknown driver type [%s]", type)));
+                .getOrElseThrow(() -> new UnknownDriverTypeException(format("Unknown driver type [%s]", type)));
     }
 
 }
