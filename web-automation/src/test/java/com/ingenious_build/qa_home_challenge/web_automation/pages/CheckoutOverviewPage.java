@@ -20,7 +20,7 @@ import java.util.List;
 @Component
 @ScenarioScope
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class CheckoutOverviewPage extends AbstractPage {
+public class CheckoutOverviewPage extends AbstractPageWithGrid {
 
     CheckOutOverviewItemsGrid checkOutOverviewItemsGrid;
     CheckoutOverviewSummary checkoutOverviewSummary;
@@ -39,12 +39,7 @@ public class CheckoutOverviewPage extends AbstractPage {
     }
 
     public List<ProductDetails> getCheckoutOverviewItems() {
-        return checkOutOverviewItemsGrid.getItems().stream()
-                .map(CheckOutOverviewItem::getData)
-                .map(inventoryItemDetails -> modelMapper.map(inventoryItemDetails, ProductDetails.class).toBuilder()
-                        .price(TestUtils.getMonetaryAmountFromString.apply(inventoryItemDetails.getPrice()))
-                        .build())
-                .toList();
+        return getProductsFromGrid(checkOutOverviewItemsGrid.getItems());
     }
 
     public String getPaymentInfo() {

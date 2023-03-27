@@ -22,7 +22,7 @@ import java.util.List;
 @Component
 @ScenarioScope
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class ProductsPage extends AbstractPage{
+public class ProductsPage extends AbstractPageWithGrid {
 
     Header header;
     InventoriesGrid productsGrid;
@@ -35,12 +35,7 @@ public class ProductsPage extends AbstractPage{
     }
 
     public List<ProductDetails> getProductsFromGrid() {
-        return productsGrid.getItems().stream()
-                .map(InventoryItem::getData)
-                .map(inventoryItemDetails -> modelMapper.map(inventoryItemDetails, ProductDetails.class).toBuilder()
-                        .price(TestUtils.getMonetaryAmountFromString.apply(inventoryItemDetails.getPrice()))
-                        .build())
-                .toList();
+        return getProductsFromGrid(productsGrid.getItems());
     }
 
     public void addProductsToCart(InventoryItemSearchCriteria searchCriteria) {

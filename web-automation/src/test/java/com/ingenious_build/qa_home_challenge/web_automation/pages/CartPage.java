@@ -21,7 +21,7 @@ import java.util.List;
 @Component
 @ScenarioScope
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class CartPage extends AbstractPage {
+public class CartPage extends AbstractPageWithGrid {
 
     CartItemsGrid cartItemsGrid;
     CartFooter cartFooter;
@@ -40,12 +40,7 @@ public class CartPage extends AbstractPage {
     }
 
     public List<ProductDetails> getCheckoutProducts() {
-        return cartItemsGrid.getItems().stream()
-                .map(CartItem::getData)
-                .map(checkOutItem -> modelMapper.map(checkOutItem, ProductDetails.class).toBuilder()
-                        .price(TestUtils.getMonetaryAmountFromString.apply(checkOutItem.getPrice()))
-                        .build())
-                .toList();
+        return getProductsFromGrid(cartItemsGrid.getItems());
     }
 
     public void removeProductFromCart(InventoryItemSearchCriteria searchCriteria) {
