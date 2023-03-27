@@ -1,9 +1,9 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.assertions;
 
-import com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey;
+import com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey;
 import com.ingenious_build.qa_home_challenge.web_automation.model.MonetaryAmount;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.*;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractAssertionsStepClass;
 import io.cucumber.java.en.Then;
@@ -17,8 +17,8 @@ import java.util.Currency;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_ADDED_TO_CART;
-import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_FROM_OVERVIEW_PAGE;
+import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey.PRODUCTS_ADDED_TO_CART;
+import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey.PRODUCTS_FROM_OVERVIEW_PAGE;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CheckoutPageSteps extends AbstractAssertionsStepClass {
@@ -39,7 +39,7 @@ public class CheckoutPageSteps extends AbstractAssertionsStepClass {
 
     @Then("I should see the items I added earlier")
     public void iShouldSeeTheItemsIAddedEarlier() {
-        List<String> expectedProducts = scenarioContext.getListValue(StorageKey.PRODUCTS_ADDED_TO_CART, String.class);
+        List<String> expectedProducts = scenarioContext.getListValue(UiStorageKey.PRODUCTS_ADDED_TO_CART, String.class);
         List<ProductDetails> actualProducts = checkoutPage.getCheckoutItems();
         softAssertions.assertThat(actualProducts)
                 .filteredOn(product -> expectedProducts.contains(product.getName()))
@@ -50,11 +50,11 @@ public class CheckoutPageSteps extends AbstractAssertionsStepClass {
     @Then("I should validate that the items have been removed")
     public void iShouldValidateThatTheItemsHaveBeenRemoved() {
         List<ProductDetails> actualItems = checkoutPage.getCheckoutItems();
-        List<String> removedItems = scenarioContext.getListValue(StorageKey.PRODUCTS_REMOVED_FROM_CART, String.class);
+        List<String> removedItems = scenarioContext.getListValue(UiStorageKey.PRODUCTS_REMOVED_FROM_CART, String.class);
         softAssertions.assertThat(actualItems)
                 .extracting(ProductDetails::getName)
                 .doesNotContainAnyElementsOf(removedItems);
-        scenarioContext.addValue(StorageKey.PRODUCTS_ADDED_TO_CART, actualItems);
+        scenarioContext.addValue(UiStorageKey.PRODUCTS_ADDED_TO_CART, actualItems);
     }
 
     @Then("I should see the order confirmation as follows:")

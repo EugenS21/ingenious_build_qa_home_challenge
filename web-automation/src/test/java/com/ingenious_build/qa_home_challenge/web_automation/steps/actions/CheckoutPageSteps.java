@@ -1,10 +1,10 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
-import com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey;
+import com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey;
 import com.ingenious_build.qa_home_challenge.web_automation.model.CheckoutInformation;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutInformationPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutOverviewPage;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.CheckoutPage;
@@ -16,8 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_ADDED_TO_CART;
-import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_REMOVED_FROM_CART;
+import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey.PRODUCTS_REMOVED_FROM_CART;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CheckoutPageSteps extends AbstractStepClass {
@@ -59,7 +58,7 @@ public class CheckoutPageSteps extends AbstractStepClass {
     @When("I review my orders details")
     public void iReviewMyOrdersDetails() {
         List<ProductDetails> productDetailsFromOverviewPage = checkoutOverviewPage.getCheckoutOverviewItems();
-        scenarioContext.addValue(StorageKey.PRODUCTS_FROM_OVERVIEW_PAGE, productDetailsFromOverviewPage);
+        scenarioContext.addValue(UiStorageKey.PRODUCTS_FROM_OVERVIEW_PAGE, productDetailsFromOverviewPage);
     }
 
     @When("I finish the checkout process")

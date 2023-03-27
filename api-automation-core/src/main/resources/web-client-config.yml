@@ -1,0 +1,5 @@
+application:
+  web-client:
+    timeout: 10000
+    baseUrl: https://reqres.in/api
+    maxInMemorySize: 16777216

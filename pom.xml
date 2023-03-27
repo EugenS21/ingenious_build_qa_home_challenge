@@ -21,6 +21,7 @@
         <module>web-automation-core</module>
         <module>common-tools</module>
         <module>testing-components-core</module>
+        <module>api-automation-core</module>
     </modules>
 
     <properties>
@@ -43,12 +44,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.ingenious-build</groupId>
-                <artifactId>api-automation</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ingenious-build</groupId>
-                <artifactId>web-automation</artifactId>
+                <artifactId>api-automation-core</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>

@@ -17,6 +17,10 @@
             <groupId>com.ingenious-build</groupId>
             <artifactId>testing-components-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ingenious-build</groupId>
+            <artifactId>api-automation-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

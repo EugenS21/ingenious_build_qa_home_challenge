@@ -2,7 +2,7 @@ package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.LoginFormDetails;
 import com.ingenious_build.qa_home_challenge.web_automation.model.LoginDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.LoginPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepClass;
 import io.cucumber.java.en.And;

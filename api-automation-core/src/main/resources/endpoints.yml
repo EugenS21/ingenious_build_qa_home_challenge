@@ -1,0 +1,10 @@
+endpoints:
+  baseUrl: https://reqres.in/api
+  users:
+    path: ${endpoints.baseUrl}/users
+    byId: /{userId}
+  login:
+    path: ${endpoints.baseUrl}/login
+  register:
+    path: ${endpoints.baseUrl}/register
+

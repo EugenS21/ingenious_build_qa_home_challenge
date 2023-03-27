@@ -1,7 +1,6 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps.assertions;
 
-import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
-import com.ingenious_build.qa_home_challenge.web_automation.pages.AbstractPage;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.LoginPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractAssertionsStepClass;
 import io.cucumber.java.en.Then;

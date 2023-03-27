@@ -1,11 +1,9 @@
 package com.ingenious_build.qa_home_challenge.web_automation.steps;
 
 import com.ingenious_build.qa_home_challenge.web_automation.core.properties.PagesProperties;
-import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
-import com.ingenious_build.qa_home_challenge.web_automation.storage.ScenarioContext;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.testing_components.core.storage.ScenarioContext;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +15,7 @@ public abstract class AbstractStepClass {
 
     ModelMapper modelMapper;
     PagesProperties pageLocators;
-    ScenarioContext scenarioContext;
+    ScenarioContext<UiStorageKey> scenarioContext;
     WebDriver webDriver;
 
     protected AbstractStepClass (StepClassesDependencies dependencies) {

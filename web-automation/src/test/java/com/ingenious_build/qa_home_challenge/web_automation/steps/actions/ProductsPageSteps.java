@@ -3,9 +3,8 @@ package com.ingenious_build.qa_home_challenge.web_automation.steps.actions;
 import com.ingenious_build.qa_home_challenge.web_automation.core.model.InventoryItemSearchCriteria;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingField;
 import com.ingenious_build.qa_home_challenge.web_automation.core.enums.SortingStrategy;
-import com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey;
 import com.ingenious_build.qa_home_challenge.web_automation.model.ProductDetails;
-import com.ingenious_build.qa_home_challenge.web_automation.model.StepClassesDependencies;
+import com.ingenious_build.qa_home_challenge.web_automation.configuration.StepClassesDependencies;
 import com.ingenious_build.qa_home_challenge.web_automation.pages.ProductsPage;
 import com.ingenious_build.qa_home_challenge.web_automation.steps.AbstractStepClass;
 import io.cucumber.java.en.When;
@@ -14,8 +13,8 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_ADDED_TO_CART;
-import static com.ingenious_build.qa_home_challenge.web_automation.enums.StorageKey.PRODUCTS_FROM_GRID;
+import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey.PRODUCTS_ADDED_TO_CART;
+import static com.ingenious_build.qa_home_challenge.web_automation.enums.UiStorageKey.PRODUCTS_FROM_GRID;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ProductsPageSteps extends AbstractStepClass {
